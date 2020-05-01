@@ -1,7 +1,7 @@
 import pandas as pd
 
 # testing particular csv file
-my_csv = pd.read_csv('Pushups.csv')
+my_csv = pd.read_csv('source\\Pushups.csv')
 
 my_csv_dim =my_csv.shape
 

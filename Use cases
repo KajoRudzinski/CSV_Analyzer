@@ -1,0 +1,9 @@
+General file stats:
+NOW:
+1) Read CSV file
+    DONE:   - can call class that accepts a path
+    - can call class that accepts a path as string
+
+LATER:
+2) Return number of rows and columns
+3) Write number of rows and columns "log" file

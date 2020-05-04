@@ -2,25 +2,21 @@ import unittest as ut
 import file_io as fi
 import os as os
 
+possible_paths = [1, True, 0.2, "z", ".csv", ".txt"]
+
 
 class FileImporterTest(ut.TestCase):
 
     def test_path_is_string(self):
-        self.assertIsInstance(fi.FileImporter(1).filepath, str)
-        self.assertIsInstance(fi.FileImporter("z").filepath, str)
+        for p in possible_paths:
+            self.assertIsInstance(fi.FileImporter(p).filepath, str)
 
     def test_checked_if_file_exists(self):
-        if os.path.isfile(fi.FileImporter(1).filepath):
-            pass
-        else:
-            self.assertFalse(fi.FileImporter(1).hasfile)
+        for p in possible_paths:
+            if os.path.isfile(fi.FileImporter(p).filepath):
+                self.assertTrue(fi.FileImporter(p).hasfile)
 
     def test_checked_if_file_is_csv(self):
-        if fi.FileImporter(1).filepath.casefold().endswith(".csv"):
-            pass
-        else:
-            self.assertFalse(fi.FileImporter(1).iscsv)
-
-# TODO:
-#  use for loop to check different results
-#  for differnt filepaths provided (for if in 1, "z", "pushups.csv")
+        for p in possible_paths:
+            if fi.FileImporter(p).filepath.casefold().endswith(".csv"):
+                self.assertTrue(fi.FileImporter(p).iscsv)

@@ -1,3 +1,4 @@
 .idea/*
 *.iml
 source/quick_check.py
+source/__pycache__

@@ -1,12 +1,18 @@
 General file stats:
-NOW:
-1) Read CSV file
-    DONE:   can call class that accepts a path
-    DONE:   can call class that accepts a path as string
-    DONE:   check if file exists
-    DONE:   check if file is csv
-    check if file can be opened
+TO DO NOW:
+	Read CSV file
+		All import class features tested
 
-LATER:
-2) Return number of rows and columns
-3) Write number of rows and columns "log" file
+TO DO LATER:
+	Return number of rows and columns
+	Write number of rows and columns "log" file
+
+DONE:
+	Read CSV file
+		can call class that accepts a path
+		can call class that accepts a path as string
+		check if file exists
+		check if file is csv
+		check if file can be read
+		return DataFrame if import corect
+		restrns error if impor incorrect

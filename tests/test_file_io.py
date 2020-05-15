@@ -5,7 +5,7 @@ import pandas as pd
 
 list_not_strings = [True, 1, 2.3]
 list_strings = ["x", "Ab1"]
-possible_paths = ["z", "test.csv", ".txt", "Pushups.csv"]
+possible_paths = ["z", "empty_csv.csv", ".txt", "Pushups.csv"]
 test_resources_path = os.path.dirname(os.getcwd()) + "\\test_resources\\"
 
 
@@ -27,7 +27,7 @@ def file_exists_and_is_csv(filepath):
 
 class ImporterTest(ut.TestCase):
 
-    def test_path_is_string(self):
+    def test_filepath(self):
         for p in list_strings:
             self.assertIsInstance(fi.Importer(p).filepath, str)
         for n in list_not_strings:
@@ -60,7 +60,10 @@ class ImporterTest(ut.TestCase):
     def test_data_init_as_none(self):
         for p in create_paths():
             f = fi.Importer(p)
-            self.assertIsNone(f.data)
+            self.assertIsNone(f.output)
 
-
-
+# TODO: Finish tests:
+# TODO: self.output = no_file
+# TODO: self.output = empty_or_corrupt_file
+# TODO: self.output = not_csv
+# TODO: self.error

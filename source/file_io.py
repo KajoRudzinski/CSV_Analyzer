@@ -1,33 +1,40 @@
 import os as os
 import pandas as pd
 
+no_file = "File does not exist"
+empty_or_corrupt_file = "Empty or currupt file"
+not_csv = "File is not a csv"
+
 
 class Importer:
+    """Imports csv. In case of failure produce an error."""
 
     def __init__(self, filepath):
         self.filepath = str(filepath)
-        self.name = "Importer"
-        self.data = None
-        self.file_has_no_data = None
         self.file_exists = os.path.isfile(str(filepath))
         self.file_is_csv = str(filepath).casefold().endswith(".csv")
         self.file_is_ready = self.file_exists and self.file_is_csv
+        self.output = None
+        self.error = None
 
-    # works! :D
-    # TODO: now work with self.file_has_no_data = None
     def get_data(self):
         if self.file_is_ready:
-            self.data = pd.read_csv(self.filepath)
-        elif not self.file_exists:
-            print("file doesn't exist")
+            try:
+                self.read_data()
+            except Exception:   # TODO: narrow down the exception
+                self.get_file_error()
+
+    def read_data(self):
+        self.output = pd.read_csv(self.filepath)
+
+    def get_file_error(self):
+        if self.file_is_ready:
+            self.error = empty_or_corrupt_file
         else:
-            # TODO: both statements to be passed as errors somehow
-            print("file is not a csv")
+            if not self.file_exists:
+                self.error = no_file
+            else:
+                self.error = not_csv
 
 
 
-#
-# class Error:
-#
-#     def __init__(self, errorname):
-#         self.name = errorname
